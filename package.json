@@ -6,6 +6,7 @@
   "repository": {},
   "devDependencies": {
     "@types/node": "^10.12.10",
+    "@types/uuid": "^3.4.4",
     "cross-env": "^5.2.0",
     "prettier": "^1.15.2",
     "ts-node": "7.0.1",
@@ -19,9 +20,11 @@
     "npm-check-updates": "^2.15.0",
     "pg": "^7.6.1",
     "reflect-metadata": "^0.1.12",
-    "typeorm": "0.2.9"
+    "typeorm": "0.2.9",
+    "uuid": "^3.3.2"
   },
   "scripts": {
-    "start": "pm2 start ecosystem.config.js && pm2 logs graphql-yoga-server"
+    "start": "pm2 start ecosystem.config.js && pm2 logs graphql-yoga-server",
+    "gen-schema-types": "gql2ts src/schema.graphql -o src/types/schema.d.ts"
   }
 }
