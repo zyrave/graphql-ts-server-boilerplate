@@ -31,9 +31,10 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development pm2 start && pm2 logs graphql-yoga-server",
-    "stop": "pm2 delete graphql-yoga-server",
+    "stop": "pm2 delete graphql-yoga-server && pm2 kill",
     "restart": "yarn stop && yarn start",
-    "test": "jest --detectOpenHandles",
+    "test-server": "cross-env NODE_ENV=test pm2 start --env test && pm2 logs graphql-yoga-server",
+    "test": "cross-env NODE_ENV=test jest --detectOpenHandles",
     "gen-schema-types": "gql2ts src/schema.graphql -o src/types/schema.d.ts"
   },
   "jest": {
