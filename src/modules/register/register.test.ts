@@ -1,8 +1,8 @@
 import { request } from 'graphql-request';
-
-import { User } from '../entity/User';
-import { startServer } from '../../src/startServer';
 import { getConnection } from 'typeorm';
+
+import { User } from '../../entity/User';
+import { startServer } from '../../../src/startServer';
 
 interface AddressInfo {
   address: string;
