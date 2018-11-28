@@ -10,6 +10,7 @@
     "moduleResolution": "node",
     "allowJs": true,
     "noImplicitAny": true,
+    "strict": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "noImplicitThis": true,
@@ -25,6 +26,9 @@
     "removeComments": true,
     "forceConsistentCasingInFileNames": true,
     "suppressImplicitAnyIndexErrors": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "skipLibCheck": false
   },
   "exclude": [
     "node_modules",

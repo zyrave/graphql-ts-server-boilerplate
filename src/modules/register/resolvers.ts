@@ -1,4 +1,4 @@
-import * as bcrypt from 'bcryptjs';
+import bcrypt from 'bcryptjs';
 import * as yup from 'yup';
 
 import { ResolverMap } from '../../types/graphql-utils';
@@ -11,6 +11,7 @@ import {
   invalidEmail,
   passwordNotLongEnough
 } from './errorMessages';
+import { createConfirmEmailLink } from './../../utils/createConfirmEmailLink';
 
 const schema = yup.object().shape({
   email: yup
@@ -29,7 +30,11 @@ export const resolvers: ResolverMap = {
     bye: () => 'bye'
   },
   Mutation: {
-    register: async (_, args: GQL.IRegisterOnMutationArguments) => {
+    register: async (
+      _,
+      args: GQL.IRegisterOnMutationArguments,
+      { redis, url }
+    ) => {
       try {
         await schema.validate(args, { abortEarly: false });
       } catch (err) {
@@ -59,6 +64,8 @@ export const resolvers: ResolverMap = {
       });
 
       await user.save();
+
+      createConfirmEmailLink(url, user.id, redis);
 
       return null;
     }
