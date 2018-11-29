@@ -13,3 +13,11 @@ A GraphQL Server boilerplate made with TypeScript, PostgreSQL, and Redis
 * Rate limiting
 * Locking accounts
 * Testing (probably Jest)
+
+## Installation
+
+yarn install
+redis-server
+yarn start
+
+yarn test

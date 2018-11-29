@@ -21,7 +21,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  conn.close();
+conn.close();
 });
 
 test('Make sure it confirms user and clears key in redis', async () => {
